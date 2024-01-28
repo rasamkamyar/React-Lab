@@ -1,0 +1,21 @@
+.container {
+  height: 140px;
+  width: 140px;
+  background-color: cyan;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+}
+
+section {
+  margin:auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 50%;
+  justify-content: center;
+  align-items: center;
+}

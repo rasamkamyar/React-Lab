@@ -1,4 +1,3 @@
-import { useState } from "react";
 import cities from "./cities.json";
 import "./App.css";
 
@@ -24,7 +23,13 @@ function App() {
       >
         Please enter your city :
       </h1>
-      <input type="text" placeholder="Search city..." onKeyUp={handleChange} />
+      <input
+        type="text"
+        placeholder="Search city..."
+        onKeyUp={handleChange}
+        style={{ fontWeight: "700", fontSize: "20px" }}
+        autoFocus
+      />
     </div>
   );
 }

@@ -1,0 +1,36 @@
+::selection {
+  color: gray;
+  background: transparent;
+}
+
+
+
+body{
+  background-color: black;
+  margin: 0 auto;
+}
+#root{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 400px;
+  height: 200px;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid red;
+}
+
+input{
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+}

@@ -15,6 +15,7 @@ function App() {
               gender={user.gender}
               age={user.dob.age}
               {...user.name}
+              {...user.location}
               email={user.email}
               phone={user.phone}
               picture={user.picture.large}

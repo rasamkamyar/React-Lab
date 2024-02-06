@@ -1,0 +1,30 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid darkolivegreen;
+  border-radius: 10px;
+  min-width: 300px;
+  padding: 30px;
+}
+
+.cardImage {
+  width: 50%;
+}
+
+.cardName {
+  color: rgb(9, 52, 9);
+  font-size: 18px;
+  margin: 10px auto 0;
+}
+
+.cardButton {
+  background-color: darkslategray;
+  color: white;
+  text-align: center;
+  margin: 15px auto;
+  border-radius: 5px;
+  padding: 8px;
+  border-style: none;
+}

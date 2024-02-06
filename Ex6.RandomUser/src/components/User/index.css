@@ -5,12 +5,26 @@
   flex-direction: column;
   border: 2px solid darkolivegreen;
   border-radius: 10px;
-  min-width: 300px;
   padding: 30px;
+}
+
+.cardContainer {
+  position: relative;
+  min-width: 300px;
+}
+
+.showCard {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: grey;
 }
 
 .cardImage {
   width: 50%;
+  border-radius: 10px;
 }
 
 .cardName {
@@ -26,5 +40,14 @@
   margin: 15px auto;
   border-radius: 5px;
   padding: 8px;
-  border-style: none;
+  cursor: pointer;
+}
+
+.moreInfoButton {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: gray;
+  color: white;
+  border: 2px solid white;
+  cursor: pointer;
 }

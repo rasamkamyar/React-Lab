@@ -56,12 +56,16 @@ function User(props) {
           </button>
         )}
         {isFlipped && (
-          <p className="flipEndCard">
+          <p className="flipCard">
             <span style={{ fontWeight: "700" }}> Address : </span>
             {props.street.number} {props.street.name} {props.city}{" "}
             {props.country}
           </p>
         )}
+        <div className="flippedBtn">
+          {isFlipped && <button>EDIT</button>}
+          {isFlipped && <button>DELETE</button>}
+        </div>
       </div>
     </div>
   );

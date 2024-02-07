@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import User from "./components/User";
+import Header from "./components/Header";
 import "./App.css";
 
 function App() {
@@ -28,7 +29,12 @@ function App() {
     // return call back
     return () => {};
   }, []);
-  return <div className="container">{users}</div>;
+  return (
+    <div className="container">
+      <Header />
+      <div className="userContainer">{users}</div>
+    </div>
+  );
 }
 
 export default App;

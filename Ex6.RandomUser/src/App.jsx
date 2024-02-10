@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
 import User from "./components/User";
 import Header from "./components/Header";
+import Skeleton from "./components/Skeleton";
 import "./App.css";
 
 function App() {
   let [users, setUsers] = useState([]);
   const [temp, setTemp] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 10000);
+
     fetch("https://randomuser.me/api/?results=50")
       .then((res) => res.json())
       .then((data) => {
@@ -15,7 +22,7 @@ function App() {
       });
 
     // return call back
-    return () => {};
+    return () => clearTimeout(timer);
   }, []);
 
   function filterUsers(textInput) {
@@ -34,6 +41,14 @@ function App() {
   return (
     <div className="container">
       <Header filterUsers={filterUsers} />
+      {users.length === 0 && (
+        <div className="userContainer">
+          {[...new Array(50)].map(() => (
+            <Skeleton height={100} width={300} />
+          ))}
+        </div>
+      )}
+
       <div className="userContainer">
         {users.map((user, index) => (
           <User

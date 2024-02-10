@@ -13,8 +13,6 @@ function User(props) {
     setIsFlipped((preState) => !preState);
   }
 
-  
-
   return (
     <div className={"cardContainer"}>
       <div

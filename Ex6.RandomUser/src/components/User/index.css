@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 2px solid darkolivegreen;
+  border: 5px solid darkolivegreen;
   border-radius: 10px;
   padding: 30px;
 }
@@ -29,14 +29,32 @@
   transition: transform 0.5s ease-in-out;
   font-size: 14px;
   height: 300px;
+  margin-bottom: 30px;
 }
-.flippedBtn {
+.flippedBtnContainer {
   transform: rotateY(-180deg);
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  width: 20px;
+  width: 100%;
   gap: 15px;
 }
+
+.flippedBtn{
+  padding: 4px;
+  color: white;
+  cursor: pointer;
+  width: 100px;
+  border: none;
+  background-color: darkslategray;
+  border-radius: 5px;
+}
+.flippedBtn:last-child{
+  
+  background-color: gray;
+}
+
+
 
 .cardImage {
   transform: rotateY(0);

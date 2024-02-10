@@ -62,9 +62,18 @@ function User(props) {
             {props.country}
           </p>
         )}
-        <div className="flippedBtn">
-          {isFlipped && <button>EDIT</button>}
-          {isFlipped && <button onClick={props.deleteItem}>DELETE</button>}
+        <div className="flippedBtnContainer">
+          {isFlipped && <button className="flippedBtn">EDIT</button>}
+          {isFlipped && (
+            <button onClick={props.deleteItem} className="flippedBtn">
+              DELETE
+            </button>
+          )}
+          {isFlipped && (
+            <button onClick={flipCard} className="flippedBtn">
+              BACK
+            </button>
+          )}
         </div>
       </div>
     </div>

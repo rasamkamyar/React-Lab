@@ -63,7 +63,11 @@ function User(props) {
           </p>
         )}
         <div className="flippedBtnContainer">
-          {isFlipped && <button className="flippedBtn">EDIT</button>}
+          {isFlipped && (
+            <button onClick={props.editItem} className="flippedBtn">
+              EDIT
+            </button>
+          )}
           {isFlipped && (
             <button onClick={props.deleteItem} className="flippedBtn">
               DELETE

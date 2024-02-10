@@ -35,7 +35,11 @@ function App() {
   }
 
   function handleDelete(index) {
-    setUsers((prev) => prev.filter((_, i) => i !== index));
+    setUsers((prev) => prev.filter((item, i) => i !== index));
+  }
+
+  function handleEdit(index) {
+    alert("ediiit")
   }
 
   return (
@@ -43,8 +47,8 @@ function App() {
       <Header filterUsers={filterUsers} />
       {users.length === 0 && (
         <div className="userContainer">
-          {[...new Array(50)].map(() => (
-            <Skeleton height={100} width={300} />
+          {[...new Array(50)].map((item, index) => (
+            <Skeleton key={index} />
           ))}
         </div>
       )}
@@ -61,6 +65,7 @@ function App() {
             picture={user.picture.large}
             key={index}
             deleteItem={() => handleDelete(index)}
+            editItem={handleEdit}
           />
         ))}
       </div>

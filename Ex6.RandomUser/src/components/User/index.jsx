@@ -13,6 +13,8 @@ function User(props) {
     setIsFlipped((preState) => !preState);
   }
 
+  
+
   return (
     <div className={"cardContainer"}>
       <div
@@ -64,7 +66,7 @@ function User(props) {
         )}
         <div className="flippedBtn">
           {isFlipped && <button>EDIT</button>}
-          {isFlipped && <button>DELETE</button>}
+          {isFlipped && <button onClick={props.deleteItem}>DELETE</button>}
         </div>
       </div>
     </div>

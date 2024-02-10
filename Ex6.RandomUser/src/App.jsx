@@ -27,6 +27,10 @@ function App() {
     setUsers(filteredUsers);
   }
 
+  function handleDelete(index) {
+    setUsers((prev) => prev.filter((_, i) => i !== index));
+  }
+
   return (
     <div className="container">
       <Header filterUsers={filterUsers} />
@@ -41,6 +45,7 @@ function App() {
             phone={user.phone}
             picture={user.picture.large}
             key={index}
+            deleteItem={() => handleDelete(index)}
           />
         ))}
       </div>

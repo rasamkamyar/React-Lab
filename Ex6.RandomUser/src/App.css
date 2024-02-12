@@ -14,3 +14,9 @@
   gap: 100px;
   margin-bottom: 150px;
 }
+
+.headerContainer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

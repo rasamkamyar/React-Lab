@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
 
 function Header(props) {
   return (
     <div className="header">
-      <h1>Random User</h1>
+      <h1 style={{marginRight:"100px"}}>Random User</h1>
       <nav style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
         <label
           htmlFor="SearchUser"

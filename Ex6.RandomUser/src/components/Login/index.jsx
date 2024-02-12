@@ -8,6 +8,10 @@ function Login() {
     setShowConfirm(!showConfirm);
   }
 
+  function backToEdit() {
+    setShowConfirm(showConfirm);
+  }
+
   return (
     <div className="loginContainer">
       {!showConfirm ? (
@@ -37,6 +41,18 @@ function Login() {
           <p style={{ fontSize: "20px", fontWeight: "600", padding: "0" }}>
             Conunter :{" "}
           </p>
+          <button
+            style={{
+              position: "absolute",
+              top: "7px",
+              right: "7px",
+              borderRadius: "15px",
+              cursor: "pointer",
+              onClick: { backToEdit },
+            }}
+          >
+            Back
+          </button>
         </div>
       )}
     </div>

@@ -9,6 +9,7 @@
   margin: 0 auto;
   gap: 30px;
   border-radius: 30px;
+position: relative;
 }
 
 .loginPage{

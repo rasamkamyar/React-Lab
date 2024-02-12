@@ -12,11 +12,6 @@
   position: relative;
 }
 
-.loginInput{
-  border: none;
-  /* outline: none; */
-}
-
 .loginPage {
   display: flex;
   align-items: center;

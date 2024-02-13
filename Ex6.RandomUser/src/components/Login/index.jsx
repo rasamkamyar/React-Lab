@@ -1,21 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import "./index.css";
 
-function Login() {
+function Login(props) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [value, setValue] = useState([]);
   const [error, setError] = useState("Enter a code");
-  const [count, setCount] = useState(10);
+  const [count, setCount] = useState(30);
   const [endTime, setEndTime] = useState(false);
   const [randomNumber, setRandomNumber] = useState(0);
-  const [runTime, setRunTime] = useState(false);
   const loginInputRef = useRef(null);
   const confirmInputRef = useRef(null);
   const interValid = useRef(null);
   const number = Math.floor(Math.random(randomNumber) * 899999 + 100000);
 
   useEffect(() => {
-    console.log(loginInputRef.current?.value);
     loginInputRef.current?.focus();
     if (showConfirm) {
       interValid.current = setInterval(() => {
@@ -40,12 +38,14 @@ function Login() {
 
   function confimation() {
     if (randomNumber === +confirmInputRef.current.value) {
-      alert("DONE!!!!!!!!");
+      props.setLoadUsers(true);
     }
   }
 
   function handleInputChange(e) {
     setValue(e.target.value);
+    props.setUserNumber(e.target.value);
+    // console.log(userNumber);
     const inputValue = e.target.value;
     const regex = /^09\d{9}$/;
     if (regex.test(inputValue)) {
@@ -64,8 +64,8 @@ function Login() {
 
   function resendCode() {
     setRandomNumber(number);
-    setEndTime(false)
-    setCount(10)
+    setEndTime(false);
+    setCount(10);
     console.log(number);
   }
 

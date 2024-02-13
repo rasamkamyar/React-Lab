@@ -6,14 +6,11 @@ import Login from "./components/Login";
 import "./App.css";
 
 function App() {
-  const [showLogin, setShowLogin] = useState(false);
-  let [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
   const [temp, setTemp] = useState(null);
+  const [userNumber, setUserNumber] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-
-  function handleLogin() {
-    setShowLogin(!showLogin);
-  }
+  const [loadUsers, setLoadUsers] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -50,11 +47,15 @@ function App() {
 
   return (
     <div className="container">
-      <button onClick={handleLogin} style={{ padding: "5px", width:"10%",cursor:"pointer" }}>
-        {showLogin ? "NUMBER" : "LOGIN"}
+      <button style={{ padding: "5px", width: "10%", cursor: "pointer" }}>
+        {loadUsers ? userNumber : "LOGIN"}
       </button>
-      {showLogin ? (
-        <Login />
+      {!loadUsers ? (
+        <Login
+          setLoadUsers={setLoadUsers}
+          userNumber={userNumber}
+          setUserNumber={setUserNumber}
+        />
       ) : (
         <div>
           <Header filterUsers={filterUsers} />

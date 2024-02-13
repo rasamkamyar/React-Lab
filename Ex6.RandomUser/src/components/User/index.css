@@ -41,7 +41,7 @@
   gap: 15px;
 }
 
-.flippedBtn{
+.flippedBtn {
   padding: 4px;
   height: 30px;
   color: white;
@@ -52,11 +52,9 @@
   background-color: darkslategray;
   border-radius: 5px;
 }
-.flippedBtn:last-child{
+.flippedBtn:last-child {
   background-color: gray;
 }
-
-
 
 .cardImage {
   transform: rotateY(0);
@@ -78,6 +76,8 @@
   margin: 15px auto;
   border-radius: 5px;
   padding: 8px;
+  font-size: 12px;
+  font-weight: 500;
   cursor: pointer;
 }
 

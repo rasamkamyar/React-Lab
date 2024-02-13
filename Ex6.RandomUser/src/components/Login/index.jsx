@@ -4,39 +4,39 @@ import "./index.css";
 function Login() {
   const [showConfirm, setShowConfirm] = useState(false);
   const [value, setValue] = useState([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState("Enter a code");
   const [count, setCount] = useState(10);
+  const [endTime, setEndTime] = useState(false);
   const [randomNumber, setRandomNumber] = useState(0);
+  const [runTime, setRunTime] = useState(false);
   const loginInputRef = useRef(null);
   const confirmInputRef = useRef(null);
-  const intervalId = useRef(null);
+  const interValid = useRef(null);
+  const number = Math.floor(Math.random(randomNumber) * 899999 + 100000);
 
   useEffect(() => {
+    console.log(loginInputRef.current?.value);
+    loginInputRef.current?.focus();
     if (showConfirm) {
-      intervalId.current = setInterval(() => {
+      interValid.current = setInterval(() => {
         setCount((count) => {
           if (count === 0) {
-            console.log("hiiii");
-            clearInterval(intervalId.current);
-            return 0;
+            clearInterval(interValid.current);
+            return setEndTime(!endTime);
           }
           return count - 1;
         });
       }, 1000);
     }
-    return () => clearInterval(intervalId.current);
-  }, [showConfirm]);
+    return () => clearInterval(interValid.current);
+  }, [showConfirm, endTime]);
 
   function handleLogin() {
     setShowConfirm(!showConfirm);
     loginInputRef.current.value = "";
-    const number = Math.floor(Math.random(randomNumber) * 899999 + 100000);
     console.log(number);
     setRandomNumber(number);
   }
-  useEffect(() => {
-    loginInputRef.current?.focus();
-  });
 
   function confimation() {
     if (randomNumber === +confirmInputRef.current.value) {
@@ -53,10 +53,20 @@ function Login() {
     } else {
       setError("Please enter a valid phone number.");
     }
+    if (e.target.value === "") {
+      setError("Enter a code");
+    }
   }
 
   function backToEdit() {
     setShowConfirm(!showConfirm);
+  }
+
+  function resendCode() {
+    setRandomNumber(number);
+    setEndTime(false)
+    setCount(10)
+    console.log(number);
   }
 
   return (
@@ -98,7 +108,17 @@ function Login() {
             confirmation
           </button>
           <p style={{ fontSize: "20px", fontWeight: "600", padding: "0" }}>
-            Conunter : {count}
+            Conunter :{" "}
+            {endTime ? (
+              <button
+                style={{ fontSize: "10px", padding: "5px", cursor: "pointer" }}
+                onClick={resendCode}
+              >
+                Resend code
+              </button>
+            ) : (
+              count
+            )}
           </p>
           <button
             style={{

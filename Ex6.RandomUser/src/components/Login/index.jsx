@@ -45,7 +45,6 @@ function Login(props) {
   function handleInputChange(e) {
     setValue(e.target.value);
     props.setUserNumber(e.target.value);
-    // console.log(userNumber);
     const inputValue = e.target.value;
     const regex = /^09\d{9}$/;
     if (regex.test(inputValue)) {

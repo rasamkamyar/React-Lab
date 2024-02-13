@@ -47,8 +47,11 @@ function App() {
 
   return (
     <div className="container">
-      <button style={{ padding: "5px", width: "10%", cursor: "pointer" }}>
-        {loadUsers ? userNumber : "LOGIN"}
+      <button
+        style={{ padding: "5px", width: "10%" }}
+        className={loadUsers ? "displaeNone" : ""}
+      >
+        LOGIN
       </button>
       {!loadUsers ? (
         <Login
@@ -58,7 +61,19 @@ function App() {
         />
       ) : (
         <div>
-          <Header filterUsers={filterUsers} />
+          <nav
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-around",
+              marginBottom: "30px",
+            }}
+          >
+            <button style={{ padding: "5px", width: "10%", cursor: "pointer" }}>
+              {loadUsers ? userNumber : "LOGIN"}
+            </button>
+            <Header filterUsers={filterUsers} />
+          </nav>
           {users.length === 0 && (
             <div className="userContainer">
               {[...new Array(50)].map((item, index) => (

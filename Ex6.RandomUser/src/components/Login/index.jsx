@@ -5,10 +5,27 @@ function Login() {
   const [showConfirm, setShowConfirm] = useState(false);
   const [value, setValue] = useState([]);
   const [error, setError] = useState("");
-  const [isValid, setIsValid] = useState(false);
+  const [count, setCount] = useState(10);
   const [randomNumber, setRandomNumber] = useState(0);
   const loginInputRef = useRef(null);
   const confirmInputRef = useRef(null);
+  const intervalId = useRef(null);
+
+  useEffect(() => {
+    if (showConfirm) {
+      intervalId.current = setInterval(() => {
+        setCount((count) => {
+          if (count === 0) {
+            console.log("hiiii");
+            clearInterval(intervalId.current);
+            return 0;
+          }
+          return count - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(intervalId.current);
+  }, [showConfirm]);
 
   function handleLogin() {
     setShowConfirm(!showConfirm);
@@ -17,9 +34,11 @@ function Login() {
     console.log(number);
     setRandomNumber(number);
   }
+  useEffect(() => {
+    loginInputRef.current?.focus();
+  });
 
   function confimation() {
-    // console.log(confirmInputRef.current.value);
     if (randomNumber === +confirmInputRef.current.value) {
       alert("DONE!!!!!!!!");
     }
@@ -39,10 +58,6 @@ function Login() {
   function backToEdit() {
     setShowConfirm(!showConfirm);
   }
-
-  useEffect(() => {
-    loginInputRef.current?.focus();
-  });
 
   return (
     <div className="loginContainer">
@@ -83,7 +98,7 @@ function Login() {
             confirmation
           </button>
           <p style={{ fontSize: "20px", fontWeight: "600", padding: "0" }}>
-            Conunter :{" "}
+            Conunter : {count}
           </p>
           <button
             style={{

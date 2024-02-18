@@ -10,6 +10,10 @@ function Login() {
   const inputEnglishRef = useRef(null);
   const inputEmailRef = useRef(null);
   const inputYearRef = useRef(null);
+  let inputPersianValue;
+  let inputEnglishValue;
+  let inputEmailValue;
+  let inputYearValue;
   const startYear = 1350;
   const endYear = 1380;
   const yearsPerid = Array.from(
@@ -17,7 +21,7 @@ function Login() {
     (_, index) => startYear + index
   );
   function handlePersianInput() {
-    const inputPersianValue = inputPresianRef.current.value;
+    inputPersianValue = inputPresianRef.current.value;
     const persianAlphabet = /^[\u0600-\u06FF\s]+$/;
 
     if (persianAlphabet.test(inputPersianValue)) {
@@ -31,7 +35,7 @@ function Login() {
   }
 
   function handleEnglishInput() {
-    const inputEnglishValue = inputEnglishRef.current.value;
+    inputEnglishValue = inputEnglishRef.current.value;
     const EnglishAlphabet = /^[a-zA-Z]+$/;
     if (EnglishAlphabet.test(inputEnglishValue)) {
       setErrorEnglish("");
@@ -44,7 +48,7 @@ function Login() {
   }
 
   function handleEmailInput() {
-    const inputEmailValue = inputEmailRef.current.value;
+    inputEmailValue = inputEmailRef.current.value;
     const emailValidation = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (inputEmailValue !== "") {
@@ -56,10 +60,8 @@ function Login() {
       setErrorEmail("");
     }
   }
-  function handleYearInput(e) {
-    console.log(e.target.value);
-    console.log(inputYearRef.current.value);
-    const inputYearValue = inputYearRef.current.value;
+  function handleYearInput() {
+    inputYearValue = inputYearRef.current.value;
     const yearValidate = /^(135[0-9]|136[0-9]|137[0-9]|138[0-9])$/;
 
     if (inputYearValue === "") {
@@ -70,6 +72,20 @@ function Login() {
 
     if (!yearValidate.test(inputYearValue) && inputYearValue !== "") {
       setErrorYear("سال تولد صحیح نمی باشد.");
+    }
+  }
+
+  function validateForm() {
+    if (
+      !inputPersianValue &&
+      !inputEnglishValue &&
+      !inputEmailValue &&
+      !inputYearValue
+    ) {
+      setErrorPersian("نام و نام خانوادگی به فارسی  نمیتواند خالی باشد.");
+      setErrorEnglish("نام و نام خانوادگی به انگلیسی  نمیتواند خالی باشد.");
+      setErrorEmail("وارد کردن ایمیل الزامی است.");
+      setErrorYear("وارد کردن سال تولد الزامی است.");
     }
   }
 
@@ -120,7 +136,6 @@ function Login() {
               return (
                 <option
                   style={{ cursor: "pointer" }} // DOES NOT WORK
-                  placeholder="hal"
                   value={item}
                   key={item}
                 >
@@ -133,7 +148,9 @@ function Login() {
           {<p className={style.redText}>{errorYear}</p>}
         </div>
         <button
+          onClick={validateForm}
           style={{
+            cursor: "pointer",
             padding: "15px",
             width: "434px",
             backgroundColor: "rgb(13,13,90)",

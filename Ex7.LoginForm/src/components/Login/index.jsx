@@ -5,9 +5,11 @@ function Login() {
   const [errorPersian, setErrorPersian] = useState("");
   const [errorEnglish, setErrorEnglish] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
+  const [errorYear, setErrorYear] = useState("");
   const inputPresianRef = useRef(null);
   const inputEnglishRef = useRef(null);
   const inputEmailRef = useRef(null);
+  const inputYearRef = useRef(null);
   const startYear = 1350;
   const endYear = 1380;
   const yearsPerid = Array.from(
@@ -54,6 +56,22 @@ function Login() {
       setErrorEmail("");
     }
   }
+  function handleYearInput(e) {
+    console.log(e.target.value);
+    console.log(inputYearRef.current.value);
+    const inputYearValue = inputYearRef.current.value;
+    const yearValidate = /^(135[0-9]|136[0-9]|137[0-9]|138[0-9])$/;
+
+    if (inputYearValue === "") {
+      setErrorYear("وارد کردن سال تولد الزامی است.");
+    } else {
+      setErrorYear("");
+    }
+
+    if (!yearValidate.test(inputYearValue) && inputYearValue !== "") {
+      setErrorYear("سال تولد صحیح نمی باشد.");
+    }
+  }
 
   return (
     <div className={style.container}>
@@ -89,22 +107,30 @@ function Login() {
           />
           {<p className={style.redText}>{errorEmail}</p>}
         </div>
-        <div>
-          <select
-            className={style.input}
-            style={{ padding: "15px", width: "434px" }}
-          >
-            <option value="" disabled selected>
-              سال تولد
-            </option>
+        <div className={style.nameInput}>
+          <input
+            onChange={handleYearInput}
+            ref={inputYearRef}
+            className={`${style.input}  ${errorYear ? style.redBorder : ""}`}
+            list="options"
+            name="option"
+          />
+          <datalist id="options">
             {yearsPerid.map((item) => {
               return (
-                <option placeholder="hal" key={item}>
+                <option
+                  style={{ cursor: "pointer" }} // DOES NOT WORK
+                  placeholder="hal"
+                  value={item}
+                  key={item}
+                >
                   {item}
                 </option>
               );
             })}
-          </select>
+          </datalist>
+
+          {<p className={style.redText}>{errorYear}</p>}
         </div>
         <button
           style={{
@@ -131,3 +157,16 @@ function Login() {
 }
 
 export default Login;
+
+// {/* <label
+//   className={`${inputYearRef.current.value !== "" ? style.customLabel : ""} `}
+//   style={{
+//     position: "absolute",
+//     top: "13px",
+//     right: "20px",
+//     opacity: "0.7",
+//   }}
+//   htmlFor="option"
+// >
+//   سال تولد
+// </label> */}

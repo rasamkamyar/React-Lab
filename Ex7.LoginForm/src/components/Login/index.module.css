@@ -51,3 +51,6 @@
 }
 
 /* .englishNameInput */
+.customLabel{
+  display: none;
+}

@@ -2,7 +2,7 @@
   background-color: white;
   border-radius: 32px;
   width: 80vw;
-  height: 80vh;
+  padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,8 +26,28 @@
 }
 
 .input {
+  outline: none;
   padding: 15px;
+  border: 1px solid blue;
   border-radius: 10px;
   text-indent: 5px;
   width: 400px;
+  margin-bottom: 18px;
 }
+
+.redText {
+  color: red;
+  margin: 0;
+  top: 50px;
+  right: 8px;
+  position: absolute;
+}
+.redBorder {
+  border: 1px solid red;
+}
+
+.nameInput {
+  position: relative;
+}
+
+/* .englishNameInput */

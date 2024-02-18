@@ -4,8 +4,10 @@ import style from "./index.module.css";
 function Login() {
   const [errorPersian, setErrorPersian] = useState("");
   const [errorEnglish, setErrorEnglish] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
   const inputPresianRef = useRef(null);
   const inputEnglishRef = useRef(null);
+  const inputEmailRef = useRef(null);
 
   function handlePersianInput() {
     const inputPersianValue = inputPresianRef.current.value;
@@ -33,6 +35,21 @@ function Login() {
       setErrorEnglish("نام و نام خانوادگی به انگلیسی  نمیتواند خالی باشد.");
     }
   }
+
+  function handleEmailInput() {
+    const inputEmailValue = inputEmailRef.current.value;
+    const emailValidation = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (inputEmailValue !== "") {
+      setErrorEmail("لطفا ایمیل خود را به درستی وارد کنید.");
+    } else {
+      setErrorEmail("وارد کردن ایمیل الزامی است.");
+    }
+    if (emailValidation.test(inputEmailValue)) {
+      setErrorEmail("");
+    }
+  }
+
   return (
     <div className={style.container}>
       <div className={style.rightContainer}>
@@ -57,8 +74,15 @@ function Login() {
           />
           {<p className={style.redText}>{errorEnglish}</p>}
         </div>
-        <div>
-          <input className={style.input} type="email" placeholder="ایمیل" />
+        <div className={style.nameInput}>
+          <input
+            onChange={handleEmailInput}
+            ref={inputEmailRef}
+            className={`${style.input}  ${errorEmail ? style.redBorder : ""}`}
+            type="email"
+            placeholder="ایمیل"
+          />
+          {<p className={style.redText}>{errorEmail}</p>}
         </div>
         <div>
           <select

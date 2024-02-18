@@ -8,7 +8,12 @@ function Login() {
   const inputPresianRef = useRef(null);
   const inputEnglishRef = useRef(null);
   const inputEmailRef = useRef(null);
-
+  const startYear = 1350;
+  const endYear = 1380;
+  const yearsPerid = Array.from(
+    { length: endYear - startYear + 1 },
+    (_, index) => startYear + index
+  );
   function handlePersianInput() {
     const inputPersianValue = inputPresianRef.current.value;
     const persianAlphabet = /^[\u0600-\u06FF\s]+$/;
@@ -89,7 +94,16 @@ function Login() {
             className={style.input}
             style={{ padding: "15px", width: "434px" }}
           >
-            <option value="">1370</option>
+            <option value="" disabled selected>
+              سال تولد
+            </option>
+            {yearsPerid.map((item) => {
+              return (
+                <option placeholder="hal" key={item}>
+                  {item}
+                </option>
+              );
+            })}
           </select>
         </div>
         <button

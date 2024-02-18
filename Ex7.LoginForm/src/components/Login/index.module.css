@@ -19,7 +19,7 @@
 .leftContainer {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 30px;
   font-weight: 600;
   justify-content: center;
   align-items: center;

@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import style from "./index.module.css";
+import photo from "/public/image.svg";
 
 function Login() {
   const [errorPersian, setErrorPersian] = useState("");
@@ -163,11 +164,11 @@ function Login() {
       </div>
       <div className={style.leftContainer}>
         <h1 style={{ marginBottom: "0" }}>مشاوره اختصاصی برای شما</h1>
-        <p style={{ marginTop: "0", fontSize: "18px" }}>
+        <p style={{ margin: "0 auto 12px", fontSize: "18px", color: "grey" }}>
           قدم به قدم مشاورتان در مسیر مهاجرت تحصیلی در کنارتان <br /> و راهنمای
           شما می باشد.
         </p>
-        <img src="./src/assets/pic login.jpg" alt="" />
+        <img src={photo} alt="" />
       </div>
     </div>
   );

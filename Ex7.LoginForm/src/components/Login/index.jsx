@@ -20,7 +20,7 @@ function Login() {
   const yearsPerid = Array.from(
     { length: endYear - startYear + 1 },
     (_, index) => startYear + index
-  );
+  )
   function handlePersianInput() {
     inputPersianValue = inputPresianRef.current.value;
     const persianAlphabet = /^[\u0600-\u06FF\s]+$/;
